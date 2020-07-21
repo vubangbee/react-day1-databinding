@@ -6,22 +6,19 @@ class ExampleCard extends PureComponent {
         super(props)
 
         this.state = {
-
+            proList: data,
         }
     }
-    //State Product List
-    state = {
-        proList: data,
-    };
+
     //Cấu trúc  render dùng lại nhiều
     renderProList = () => {
         return this.state.proList.map((item, index) => {
             return (
-                <div className="col-sm-4">
+                <div className="col-sm-4" key={index}>
                     <div className="card">
-                        <img className="card-img-top" src="./img/vsphone.jpg" alt="asdsad" />
+                        <img className="card-img-top" src={item.hinhAnh} alt="asdsad" />
                         <div className="card-body">
-                            <h4 className="card-title">VinSmart Live</h4>
+                            <h4 className="card-title">{item.tenSP}</h4>
                             <button className="btn btn-success">Chi tiết</button><button type="button" className="btn btn-danger">Mua</button>
                         </div>
                     </div>
@@ -88,34 +85,8 @@ class ExampleCard extends PureComponent {
                             </tfoot>
                         </table>
                     </div>
-                    <div className="row">
-                        <div className="col-sm-4">
-                            <div className="card">
-                                <img className="card-img-top" src="./img/vsphone.jpg" alt="asdsad" />
-                                <div className="card-body">
-                                    <h4 className="card-title">VinSmart Live</h4>
-                                    <button className="btn btn-success">Chi tiết</button><button type="button" className="btn btn-danger">Mua</button>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col-sm-4">
-                            <div className="card">
-                                <img className="card-img-top" src="./img/meizuphone.jpg" alt="asdsad" />
-                                <div className="card-body">
-                                    <h4 className="card-title">Meizu 16Xs</h4>
-                                    <button className="btn btn-success">Chi tiết</button><button type="button" className="btn btn-danger">Mua</button>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col-sm-4">
-                            <div className="card">
-                                <img className="card-img-top" src="./img/applephone.jpg" alt="asdsad" />
-                                <div className="card-body">
-                                    <h4 className="card-title">Iphone XS Max</h4>
-                                    <button className="btn btn-success">Chi tiết</button><button type="button" className="btn btn-danger">Mua</button>
-                                </div>
-                            </div>
-                        </div>
+                    <div className="row" >
+                        {this.renderProList()}
                     </div>
                     <div className="row">
                         <div className="col-sm-5">
