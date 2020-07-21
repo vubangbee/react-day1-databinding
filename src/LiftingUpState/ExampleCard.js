@@ -2,6 +2,7 @@ import React, { PureComponent } from 'react'
 import data from "./data.json";
 import Product from './Product';
 import ProductList from './ProductList';
+import Card from './Card';
 
 class ExampleCard extends PureComponent {
     constructor(props) {
@@ -26,61 +27,8 @@ class ExampleCard extends PureComponent {
         return (
             <div>
                 <div className="container">
-                    <div>
-                        <h2>Card</h2>
-                        <table className="table">
-                            <thead>
-                                <tr>
-                                    <th>id</th>
-                                    <th>Hình Ảnh</th>
-                                    <th>Tên sảm phẩm</th>
-                                    <th>Giá bán</th>
-                                    <th>số lượng</th>
-                                    <th>thành giá</th>
-                                    <th>Action</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>
-                                        <img src="./img/vsphone.jpg" alt="asda" style={{ width: 100 }} />
-                                    </td>
-                                    <td>VinSmart Live</td>
-                                    <td>5700000$</td>
-                                    <td>
-                                        <button className="btn btn-info">-</button><span className="mx-2">3</span><button className="btn btn-info">+</button>
-                                    </td>
-                                    <td>17100000$</td>
-                                    <td><button className="btn btn-danger">xóa</button></td>
-                                </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>
-                                        <img src="./img/meizuphone.jpg" alt="asda" style={{ width: 100 }} />
-                                    </td>
-                                    <td>Meizu 16Xs</td>
-                                    <td>7600000$</td>
-                                    <td>
-                                        <button className="btn btn-info">-</button><span className="mx-2">2</span><button className="btn btn-info">+</button>
-                                    </td>
-                                    <td>15200000$</td>
-                                    <td><button className="btn btn-danger">xóa</button></td>
-                                </tr>
-                            </tbody>
-                            <tfoot>
-                                <tr>
-                                    <td />
-                                    <td />
-                                    <td />
-                                    <td />
-                                    <td />
-                                    <td>32300000</td>
-                                </tr>
-                            </tfoot>
-                        </table>
-                    </div>
-                    <ProductList proList={this.state.proList} />
+                    <Card />
+                    <ProductList handleSelectPro={this.handleSelectPro} proList={this.state.proList} />
                     {this.state.proSelected ? (<div className="row">
                         <div className="col-sm-5">
                             <img className="img-fluid" src={this.state.proSelected.hinhAnh} />
