@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react'
 import data from "./data.json";
 import Product from './Product';
+import ProductList from './ProductList';
 
 class ExampleCard extends PureComponent {
     constructor(props) {
@@ -19,15 +20,7 @@ class ExampleCard extends PureComponent {
     }
 
     //Cấu trúc  render dùng lại nhiều
-    renderProList = () => {
-        return this.state.proList.map((item, index) => {
-            return (
-                <div className="col-sm-4" key={index}>
-                    <Product handleSelectPro={this.handleSelectPro} item={item} />
-                </div>
-            )
-        })
-    }
+
 
     render() {
         return (
@@ -87,9 +80,7 @@ class ExampleCard extends PureComponent {
                             </tfoot>
                         </table>
                     </div>
-                    <div className="row" >
-                        {this.renderProList()}
-                    </div>
+                    <ProductList proList={this.state.proList} />
                     {this.state.proSelected ? (<div className="row">
                         <div className="col-sm-5">
                             <img className="img-fluid" src={this.state.proSelected.hinhAnh} />
