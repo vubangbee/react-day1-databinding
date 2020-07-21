@@ -9,6 +9,29 @@ class Card extends Component {
         }
     }
 
+    renderListCard = () => {
+        return this.props.cardList.map((item, index) => {
+            return (
+                <tr>
+                    <td>1</td>
+                    <td>
+                        <img src={item.hinhAnh} alt="asda" style={{ width: 100 }} />
+                    </td>
+                    <td>{item.tenSP}</td>
+                    <td>{item.giaBan}</td>
+                    <td>
+                        <button className="btn btn-info">-</button><span className="mx-2">{item.soLuong}</span><button className="btn btn-info">+</button>
+                    </td>
+                    <td>17100000$</td>
+                    <td><button onClick={() => { this.props.handleDelete(item) }} className="btn btn-danger">xóa</button></td>
+                </tr>
+            )
+
+        }
+        )
+
+    }
+
     render() {
         return (
             <div>
@@ -26,32 +49,8 @@ class Card extends Component {
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>
-                                <img src="./img/vsphone.jpg" alt="asda" style={{ width: 100 }} />
-                            </td>
-                            <td>VinSmart Live</td>
-                            <td>5700000$</td>
-                            <td>
-                                <button className="btn btn-info">-</button><span className="mx-2">3</span><button className="btn btn-info">+</button>
-                            </td>
-                            <td>17100000$</td>
-                            <td><button className="btn btn-danger">xóa</button></td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>
-                                <img src="./img/meizuphone.jpg" alt="asda" style={{ width: 100 }} />
-                            </td>
-                            <td>Meizu 16Xs</td>
-                            <td>7600000$</td>
-                            <td>
-                                <button className="btn btn-info">-</button><span className="mx-2">2</span><button className="btn btn-info">+</button>
-                            </td>
-                            <td>15200000$</td>
-                            <td><button className="btn btn-danger">xóa</button></td>
-                        </tr>
+                        {this.renderListCard()}
+
                     </tbody>
                     <tfoot>
                         <tr>

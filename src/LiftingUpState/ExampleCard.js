@@ -11,8 +11,48 @@ class ExampleCard extends PureComponent {
         this.state = {
             proList: data,
             proSelected: null,
+            cardList: [],
         }
 
+    }
+    handleDelete = (card) => {
+        /**
+         * B1  tìm vị trí
+         * b2 Cắt ra khỏi  mảng
+         * b3 Setstate
+         */
+        let cardListUpdate = [...this.state.cardList];
+        let index = cardListUpdate.findIndex((item) => item.maSP === card.maSP);
+
+        if (index >= 0) {
+            //Xóa  card
+            cardListUpdate.splice(index, 1);
+            this.setState({
+                cardList: cardListUpdate,
+            })
+        }
+
+    }
+    handleBuy = (card) => {
+        //tạo cardlist mới
+        // let cardListUpdate = this.state.cardList.push(card)
+        let cardListUpdate = [...this.state.cardList]
+        //setstate
+
+        //Thêm sp vào nếu có thì  tăng số lượng
+        let index = cardListUpdate.findIndex((item) => item.maSP === card.maSP);
+
+        if (index >= 0) {
+            //tìm thấy
+            cardListUpdate[index].soLuong += 1;
+        } else {
+            //Không tìm thấy
+            card.soLuong = 1;
+            cardListUpdate = [...cardListUpdate, card];
+        }
+        this.setState({
+            cardList: cardListUpdate,
+        });
     }
     handleSelectPro = (pro) => {
         this.setState({
@@ -27,8 +67,8 @@ class ExampleCard extends PureComponent {
         return (
             <div>
                 <div className="container">
-                    <Card />
-                    <ProductList handleSelectPro={this.handleSelectPro} proList={this.state.proList} />
+                    <Card handleDelete={this.handleDelete} cardList={this.state.cardList} />
+                    <ProductList handleBuy={this.handleBuy} handleSelectPro={this.handleSelectPro} proList={this.state.proList} />
                     {this.state.proSelected ? (<div className="row">
                         <div className="col-sm-5">
                             <img className="img-fluid" src={this.state.proSelected.hinhAnh} />
