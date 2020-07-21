@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react'
 import data from "./data.json";
+import Product from './Product';
 
 class ExampleCard extends PureComponent {
     constructor(props) {
@@ -7,7 +8,14 @@ class ExampleCard extends PureComponent {
 
         this.state = {
             proList: data,
+            proSelected: null,
         }
+
+    }
+    handleSelectPro = (pro) => {
+        this.setState({
+            proSelected: pro,
+        })
     }
 
     //Cấu trúc  render dùng lại nhiều
@@ -15,13 +23,7 @@ class ExampleCard extends PureComponent {
         return this.state.proList.map((item, index) => {
             return (
                 <div className="col-sm-4" key={index}>
-                    <div className="card">
-                        <img className="card-img-top" src={item.hinhAnh} alt="asdsad" />
-                        <div className="card-body">
-                            <h4 className="card-title">{item.tenSP}</h4>
-                            <button className="btn btn-success">Chi tiết</button><button type="button" className="btn btn-danger">Mua</button>
-                        </div>
-                    </div>
+                    <Product handleSelectPro={this.handleSelectPro} item={item} />
                 </div>
             )
         })
@@ -88,9 +90,9 @@ class ExampleCard extends PureComponent {
                     <div className="row" >
                         {this.renderProList()}
                     </div>
-                    <div className="row">
+                    {this.state.proSelected ? (<div className="row">
                         <div className="col-sm-5">
-                            <img className="img-fluid" src="./img/vsphone.jpg" />
+                            <img className="img-fluid" src={this.state.proSelected.hinhAnh} />
                         </div>
                         <div className="col-sm-7">
                             <h3>Thông số kỹ thuật</h3>
@@ -98,32 +100,33 @@ class ExampleCard extends PureComponent {
                                 <tbody>
                                     <tr>
                                         <td>Màn hình</td>
-                                        <td>AMOLED, 6.2", Full HD+</td>
+                                        <td>{this.state.proSelected.manHinh}</td>
                                     </tr>
                                     <tr>
                                         <td>Hệ điều hành</td>
-                                        <td>iOS 12</td>
+                                        <td>{this.state.proSelected.heDieuHanh}</td>
                                     </tr>
                                     <tr>
                                         <td>Camera trước</td>
-                                        <td>7 MP</td>
+                                        <td>{this.state.proSelected.cameraTruoc}</td>
                                     </tr>
                                     <tr>
                                         <td>Camera sau</td>
-                                        <td>Chính 12 MP &amp; Phụ 12 MP</td>
+                                        <td>{this.state.proSelected.cameraSau}</td>
                                     </tr>
                                     <tr>
                                         <td>RAM</td>
-                                        <td>4 GB</td>
+                                        <td>{this.state.proSelected.ram}</td>
                                     </tr>
                                     <tr>
                                         <td>ROM</td>
-                                        <td>64 GB</td>
+                                        <td>{this.state.proSelected.rom}</td>
                                     </tr>
                                 </tbody>
                             </table>
                         </div>
-                    </div>
+                    </div>) : null}
+
                 </div>
             </div>
 
