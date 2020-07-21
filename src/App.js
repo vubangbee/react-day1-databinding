@@ -9,18 +9,20 @@ import EvenBinding from './EventBinding/EvenBinding';
 import RenderWithState from './RenderWithState/RenderWithState';
 import BaiTapChonXe from './RenderWithState/BaiTapChonXe';
 import RenderWithMap from './RenderWithState/RenderWithMap/RenderWithMap';
+import ExampleCard from './LiftingUpState/ExampleCard';
 
 function App() {
   return (
     <div className="App">
-        {/* <BaiTapLayout /> */}
-        {/* <BaiTapLayout2 /> */}
-        {/* <DataBinding /> */}
-        {/* <EvenBinding/> */}
-        {/* <RenderWithState/> */}
-        {/* <BaiTapChonXe/> */}
-        <RenderWithMap/>
-        
+      {/* <BaiTapLayout /> */}
+      {/* <BaiTapLayout2 /> */}
+      {/* <DataBinding /> */}
+      {/* <EvenBinding/> */}
+      {/* <RenderWithState/> */}
+      {/* <BaiTapChonXe/> */}
+      {/* <RenderWithMap /> */}
+      <ExampleCard />
+
     </div>
   );
 }
