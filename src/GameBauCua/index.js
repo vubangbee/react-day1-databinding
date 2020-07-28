@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import "./style.css"
 import DanhSachCuoc from './DanhSachCuoc'
+import XucXac from './XucXac'
 
 class GameBauCua extends Component {
     constructor(props) {
@@ -25,18 +26,7 @@ class GameBauCua extends Component {
                             <DanhSachCuoc />
                         </div>
                         <div className="col-md-12 col-lg-5">
-                            <div className="bau-cua__do w-100 h-100">
-                                <img src="./img/dia.png" alt="hinh" className="w-100 h-100" />
-                                <div className="bau-cua__xoay bau-cua__xoay--1">
-                                    <img src="./img/bau.png" alt="hinhanh" />
-                                </div>
-                                <div className="bau-cua__xoay bau-cua__xoay--2">
-                                    <img src="./img/bau.png" alt="hinhanh" />
-                                </div>
-                                <div className="bau-cua__xoay bau-cua__xoay--3">
-                                    <img src="./img/bau.png" alt="hinhanh" />
-                                </div>
-                            </div>
+                            <XucXac />
                         </div>
                     </div>
                 </div>
