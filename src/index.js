@@ -3,9 +3,18 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+// kết nối redux với  React
+import { createStore } from 'redux'
+import { Provider } from 'react-redux';
+import rootReducer from './redux/reducers/rootReducer';
+const reduxStore = createStore(rootReducer);
+
 
 ReactDOM.render(
-    <App />,
+  <Provider store={reduxStore}>
+    <App />
+  </Provider>
+  ,
   document.getElementById('root')
 );
 

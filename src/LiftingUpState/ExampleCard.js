@@ -14,7 +14,40 @@ class ExampleCard extends PureComponent {
             cardList: [],
         }
 
+
+
     }
+
+    //Phương thức thay đổi state xử lý tăng giảm số lượng.
+    tangGiamSoLuong = (maSP, tangGiam) => {
+        //Tăng là true, giảm là false
+
+        //Input là gi: maSP
+        //Tìm ra sp chứa maSP = với maSP nút tăng giảm số lượng click
+        // console.log('maSP', maSP);
+        // console.log('Tăng Giảm', tangGiam);
+        let gioHangCapNhap = [...this.state.cardList];
+        let index = gioHangCapNhap.findIndex(spGioHang => spGioHang.maSP === maSP);
+        if (index !== -1) {
+            if (tangGiam) {
+                gioHangCapNhap[index].soLuong += 1;
+            }
+            else {
+                if (gioHangCapNhap[index].soLuong > 1) {
+                    gioHangCapNhap[index].soLuong -= 1;
+                }
+                else {
+                    alert('Số lượng tối thiểu là  1')
+                }
+            }
+        }
+        //Setstate tăng giảm số lượng
+        this.setState({
+            cardList: gioHangCapNhap
+        })
+
+    }
+
     handleDelete = (card) => {
         /**
          * B1  tìm vị trí
@@ -67,7 +100,7 @@ class ExampleCard extends PureComponent {
         return (
             <div>
                 <div className="container">
-                    <Card handleDelete={this.handleDelete} cardList={this.state.cardList} />
+                    <Card tangGiamSoLuong={this.tangGiamSoLuong} handleDelete={this.handleDelete} cardList={this.state.cardList} />
                     <ProductList handleBuy={this.handleBuy} handleSelectPro={this.handleSelectPro} proList={this.state.proList} />
                     {this.state.proSelected ? (<div className="row">
                         <div className="col-sm-5">

@@ -10,6 +10,7 @@ import RenderWithState from './RenderWithState/RenderWithState';
 import BaiTapChonXe from './RenderWithState/BaiTapChonXe';
 import RenderWithMap from './RenderWithState/RenderWithMap/RenderWithMap';
 import ExampleCard from './LiftingUpState/ExampleCard';
+import BaiTapGioHang from './BaiTapRedux/BaiTapGioHang/BaiTapGioHang';
 
 function App() {
   return (
@@ -21,7 +22,8 @@ function App() {
       {/* <RenderWithState/> */}
       {/* <BaiTapChonXe/> */}
       {/* <RenderWithMap /> */}
-      <ExampleCard />
+      {/* <ExampleCard /> */}
+      <BaiTapGioHang />
 
     </div>
   );
