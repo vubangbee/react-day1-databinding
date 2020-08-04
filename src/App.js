@@ -11,6 +11,7 @@ import BaiTapChonXe from './RenderWithState/BaiTapChonXe';
 import RenderWithMap from './RenderWithState/RenderWithMap/RenderWithMap';
 import ExampleCard from './LiftingUpState/ExampleCard';
 import GameBauCua from './GameBauCua';
+import GameTaiXiu from './GameTaiXiu';
 
 function App() {
   return (
@@ -23,7 +24,8 @@ function App() {
       {/* <BaiTapChonXe/> */}
       {/* <RenderWithMap /> */}
       {/* <ExampleCard /> */}
-      <GameBauCua />
+      {/* <GameBauCua /> */}
+      <GameTaiXiu />
 
     </div>
   );
