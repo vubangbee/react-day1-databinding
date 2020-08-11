@@ -12,7 +12,7 @@ export default class ChildComponent extends Component {
     return true;
   }
   render() {
-    console.log("childCoponentRender");
+    console.log("childComponentRender");
     return (
       <div className="container">
         <p>{this.props.user.name}</p>
